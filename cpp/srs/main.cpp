@@ -170,7 +170,7 @@ double* view_matrix() {
 
 double DEMandelbulb(double ray_pos[]) {
     double tmp_pos[3];
-    for (int i = 0; i < 3; ++i) { tmp_pos[i] = ray_pos[i]; }
+    copyVec(ray_pos, tmp_pos);
     double cart_pos[3];
     double dr = 1.0;
     double r;
@@ -258,7 +258,6 @@ void rayMarching(int x, int y, double tmp_output_arr[]) {
     // initialise output array
     tmp_output_arr[0] = MAX_DIST;
     tmp_output_arr[1] = 0;
-    tmp_output_arr[2] = 0;
     for (int tmp_iter = 0; tmp_iter < MAX_STEPS; tmp_iter++) {
         // integrate the ray forwards
         moveVec3(CAM_POS, ray_dir_cam, ray_dist, ray_pos);
@@ -303,7 +302,7 @@ void calcScene(int iter=0) {
     std::cout << "\t" << iter << ". Calculating points." << std::endl;
     #pragma omp parallel
     {
-        double tmp_output_ptr[3];
+        double tmp_output_ptr[2];
         #pragma omp for
         for (int y = 0; y < HEIGHT; y++) {
             for (int x = 0; x < WIDTH; x++) {
