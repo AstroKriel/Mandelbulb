@@ -10,3 +10,5 @@ Read the code's comments to understand what variables do -- useful if you want t
 
 Plot data with python file: plot_data, which uses ffmpeg to create mp4 animations if you have rendered a series of frames.
 Get it here: https://ffmpeg.org/download.html
+
+./cpp/mandelbulb.gif
