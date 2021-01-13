@@ -1,7 +1,5 @@
 # Mandelbulb
 
-![plot](./cpp/mandelbulb.gif)
-
 Small, simple project where I code a Mandelbulb-set renderer from scratch using both C++ and Python.
 
 The cpp folder is the final product. The python folder was used for development, but does the same thing, just slower.
@@ -21,3 +19,6 @@ You can read more on these topics here:
 - http://blog.hvidtfeldts.net/index.php/2011/06/distance-estimated-3d-fractals-part-i/
 - http://celarek.at/wp/wp-content/uploads/2014/05/realTimeFractalsReport.pdf
 - https://www.3dgep.com/understanding-the-view-matrix/
+
+![plot](./cpp/mandelbulb.gif)
+<img src=./cpp/mandelbulb.gif width="100" height="100">
