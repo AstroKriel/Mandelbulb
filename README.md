@@ -1,6 +1,6 @@
 # Mandelbulb
 
-Small project where I code a Mandelbulb-set renderer from scratch using both C++ and Python.
+Small, simple project where I code a Mandelbulb-set renderer from scratch using both C++ and Python.
 
 The cpp folder is the final product. The python folder was used for development, but does the same thing, just slower.
 
