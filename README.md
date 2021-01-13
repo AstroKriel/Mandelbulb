@@ -5,7 +5,7 @@ Small, simple project where I code a Mandelbulb-set renderer from scratch using 
 The cpp folder is the final product. The python folder was used for development, but does the same thing, just slower.
 
 Compile the C++ code from within the cpp/srs folder uisng (windows): 
-  g++ -Wall -Wextra -fopenmp .\srs\main.cpp -o program
+> g++ -Wall -Wextra -fopenmp .\srs\main.cpp -o program
 and run it to generate data.
 
 Plot data with python plotting file 'plot_data.' This code relies on ffmpeg to create mp4 animations. You can get it here: https://ffmpeg.org/download.html
