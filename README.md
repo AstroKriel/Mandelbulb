@@ -20,4 +20,6 @@ You can read more on these topics here:
 - http://celarek.at/wp/wp-content/uploads/2014/05/realTimeFractalsReport.pdf
 - https://www.3dgep.com/understanding-the-view-matrix/
 
-<img src=./cpp/mandelbulb.gif width="400" height="400">
+<p align="center">
+  <img src=./cpp/mandelbulb.gif width="400" height="400">
+</p>
