@@ -20,5 +20,5 @@ You can read more on these topics here:
 - https://www.3dgep.com/understanding-the-view-matrix/
 
 <p align="center">
-  <img src=./cpp/mandelbulb.gif width="400" height="400">
+  <img src=./cpp/mandelbulb-nb.gif width="400" height="400">
 </p>
