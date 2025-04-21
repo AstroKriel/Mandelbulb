@@ -1,2 +1,4 @@
-./cpp/data
-./cpp/images
+# ignore extraneous code-products
+.DS_Store
+**/__pycache__
+**.png
