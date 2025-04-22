@@ -5,8 +5,8 @@ This codebase renders the Mandelbulb fractal using ray-marching and signed dista
 <p align="center">
   <img src="./gallery/mandelbulb_animated.gif" width="80%">
   <br>
-  <img src="./gallery/mandelbulb_frame_1.png" width="49%">
-  <img src="./gallery/mandelbulb_frame_3.png" width="49%">
+  <img src="./gallery/mandelbulb_frame_fr.png" width="49%">
+  <img src="./gallery/mandelbulb_frame_br.png" width="49%">
 </p>
 
 ## How It Works
@@ -19,7 +19,7 @@ A few concepts come together in this project:
 
 ## Gallery
 
-Check out the `gallery/` folder for high-resolution renders and animations.
+Look in the `gallery/` folder for high-resolution renders and animations.
 
 ## License
 
