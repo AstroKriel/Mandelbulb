@@ -5,6 +5,8 @@ import numpy
 import itertools
 import multiprocessing
 import matplotlib.pyplot as mpl_plot
+from tqdm import tqdm
+from pathlib import Path
 from . import utils, config, mandelbulb, lighting
 
 
@@ -59,7 +61,12 @@ def compute_pixel(args):
   dist, light = ray_marching(x, y, camera, settings, depth)
   return x, y, dist, light
 
-def draw_scene(camera, settings, save_path=None, frame_num=None):
+def draw_scene(
+    camera           : config.Camera,
+    settings         : config.SceneSettings,
+    output_directory : str | Path | None = None,
+    frame_num        : int | None = None,
+  ):
   width, height = settings.width, settings.height
   dist_pixels   = numpy.zeros((height, width))
   light_pixels  = numpy.zeros((height, width))
@@ -68,7 +75,10 @@ def draw_scene(camera, settings, save_path=None, frame_num=None):
     for x, y in itertools.product(range(width), range(height))
   ]
   with multiprocessing.Pool(multiprocessing.cpu_count()) as pool:
-    results = pool.map(compute_pixel, args)
+    results_iter = pool.imap_unordered(compute_pixel, args)
+    results = []
+    for result in tqdm(results_iter, total=len(args), desc="Rendering"):
+      results.append(result)
   for x, y, dist, light in results:
     dist_pixels[y, x] = dist
     light_pixels[y, x] = light
@@ -93,12 +103,15 @@ def draw_scene(camera, settings, save_path=None, frame_num=None):
   axs[2].imshow(image, cmap="Greys_r", origin="upper")
   axs[2].axis("off")
   mpl_plot.tight_layout()
-  if save_path:
+  if output_directory is not None:
+    output_directory = Path(output_directory).absolute()
     if frame_num is not None:
-      filename = f"{save_path}/mandelbulb_frame_{frame_num:04d}.png"
-    else: filename = f"{save_path}/mandelbulb.png"
-    fig.savefig(filename, dpi=300, bbox_inches='tight')
+      file_name = f"mandelbulb_frame_{frame_num:04d}.png"
+    else: file_name = "mandelbulb.png"
+    file_path = output_directory / file_name
+    fig.savefig(file_path, dpi=300, bbox_inches='tight')
     mpl_plot.close(fig)
+    print(f"Saved: {file_path}")
   else: mpl_plot.show()
 
 
