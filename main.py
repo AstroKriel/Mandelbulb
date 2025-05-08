@@ -3,6 +3,7 @@
 ## ###############################################################
 import os
 import numpy
+from pathlib import Path
 from mandelbulb import config, rendering
 
 
@@ -10,10 +11,10 @@ from mandelbulb import config, rendering
 ## PROGRAM MAIN
 ## ###############################################################
 def main():
-  output_dir = "gallery"
-  os.makedirs(output_dir, exist_ok=True)
+  output_directory = Path("gallery").absolute()
+  os.makedirs(output_directory, exist_ok=True)
   settings = config.SceneSettings(
-    resolution       = 150,
+    resolution       = 100,
     power            = 8.0,  # power parameter for mandelbulb fractal
     light_pos        = numpy.array([2.0, 2.0, 2.0]),
     ambient          = 0.15, # ambient light level
@@ -44,9 +45,8 @@ def main():
       ]),
     )
     print(f"Rendering frame {frame_index+1}/{num_frames}")
-    rendering.draw_scene(camera, settings, save_path=output_dir, frame_num=frame_index)
-  print(f"Orbit animation rendered. {num_frames} frames saved to {output_dir}")
-  print(f"Images saved to: {os.path.abspath(output_dir)}")
+    rendering.draw_scene(camera, settings, output_directory=output_directory, frame_num=frame_index)
+  print(f"Orbit animation rendered: {num_frames} frames saved to {output_directory}")
 
 
 ## ###############################################################
