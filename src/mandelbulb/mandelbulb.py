@@ -7,24 +7,22 @@ import numpy
 ## ###############################################################
 ## FUNCTIONS
 ## ###############################################################
-def estimate_distance(pos, power, num_iterations=10):
-  z = pos.copy()
-  dr = 1.0
-  r = 0.0
+def estimate_distance(input_position, exponent, num_iterations=10):
+  iter_position = input_position.copy()
+  radius_derivative = 1.0
+  radius = 0.0
   for _ in range(num_iterations):
-    r = numpy.linalg.norm(z)
-    if r > 2.0:
-      break
-    theta = numpy.acos(z[2] / r)
-    phi = numpy.atan2(z[1], z[0])
-    zr = r ** power
-    dr = power * r ** (power - 1) * dr + 1.0
-    z = pos + zr * numpy.array([
-      numpy.sin(theta * power) * numpy.cos(phi * power),
-      numpy.sin(theta * power) * numpy.sin(phi * power),
-      numpy.cos(theta * power)
+    radius = numpy.linalg.norm(iter_position)
+    if radius > 2.0: break
+    polar_angle = numpy.acos(iter_position[2] / radius)
+    azimuthal_angle = numpy.atan2(iter_position[1], iter_position[0])
+    radius_derivative = exponent * numpy.power(radius, exponent-1) * radius_derivative + 1.0
+    iter_position = input_position + numpy.power(radius, exponent) * numpy.array([
+      numpy.sin(polar_angle * exponent) * numpy.cos(azimuthal_angle * exponent),
+      numpy.sin(polar_angle * exponent) * numpy.sin(azimuthal_angle * exponent),
+      numpy.cos(polar_angle * exponent)
     ])
-  return 0.5 * numpy.log(r) * r / dr
+  return 0.5 * numpy.log(radius) * radius / radius_derivative
 
 
 ## END OF MODULE
