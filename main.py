@@ -26,10 +26,10 @@ def main():
     fog_density      = 0.03, # atmospheric fog effect
     shadow_sharpness = 16.0, # shadow edge sharpness
   )
-  num_frames    = 16 # number of frames for a full loop (2 orbits)
+  num_frames    = 5 # number of frames for a full loop (2 orbits)
   orbit_radius  = 2.5 # distance from center
   height_offset = 0.5 # height above orbit plane
-  print(f"Rendering with resolution {settings.width}x{settings.height}...")
+  print(f"Rendering each frame of the Mandelbulb at a resolution of {settings.width}x{settings.height}...")
   for frame_index in range(num_frames):
     angle  = 2 * numpy.pi * frame_index / num_frames
     camera = config.Camera(
