@@ -46,11 +46,11 @@ class SceneSettings:
 
   @property
   def width(self):
-    return 4 * self.resolution
+    return self.resolution # square aspect ratio
 
   @property
   def height(self):
-    return 4 * self.resolution
+    return self.resolution # square aspect ratio
 
 
 ## END OF MODULE
