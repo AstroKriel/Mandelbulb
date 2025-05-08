@@ -2,7 +2,7 @@
 ## DEPENDENCIES
 ## ###############################################################
 import numpy
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from . import utils
 
 
@@ -31,8 +31,8 @@ class SceneSettings:
   surf_dist        : float = 0.001
   epsilon          : float = 0.001
   power            : float = 8.0
-  target_pos       : numpy.ndarray = numpy.array([0.0, 0.0, 0.0])
-  light_pos        : numpy.ndarray = numpy.array([2.0, 2.0, 2.0])
+  target_pos       : numpy.ndarray = field(default_factory=lambda: numpy.array([0.0, 0.0, 0.0])) # new array per instance
+  light_pos        : numpy.ndarray = field(default_factory=lambda: numpy.array([2.0, 2.0, 2.0])) # new array per instance
   light_intensity  : float = 1.2  # increase light brightness
   ambient          : float = 0.15 # ambient light level
   diffuse          : float = 0.7  # diffuse lighting strength
